@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bol AI – Practice English. Sound Confident.</title>
+  <meta name="description" content="Bol AI is India's smartest English speaking coach. Practice real conversations, get AI feedback, and build fluency — at your own pace." />
+  <meta property="og:title" content="Bol AI – Practice English. Sound Confident." />
+  <meta property="og:description" content="India's smartest AI English speaking coach. Real conversations, instant feedback." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://getbolai.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #060B18;
+      --surface:  #0C1624;
+      --border:   #1A2840;
+      --accent:   #00E676;
+      --accent2:  #00BCD4;
+      --purple:   #8B5CF6;
+      --text:     #F1F5F9;
+      --text2:    #94A3B8;
+      --text3:    #475569;
+      --radius:   18px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Scrollbar ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ── Utility ────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .accent { color: var(--accent); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(0,230,118,.1); border: 1px solid rgba(0,230,118,.25);
+      color: var(--accent); font-size: .72rem; font-weight: 700;
+      padding: 5px 12px; border-radius: 20px; letter-spacing: .8px;
+      text-transform: uppercase;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: inherit; font-weight: 700; font-size: 1rem;
+      cursor: pointer; border: none; border-radius: 14px;
+      padding: 14px 28px; transition: transform .18s, box-shadow .18s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #00BFA5);
+      color: #050B14;
+      box-shadow: 0 8px 32px rgba(0,230,118,.3);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 40px rgba(0,230,118,.45); }
+    .btn-ghost {
+      background: rgba(255,255,255,.05); color: var(--text2);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.09); }
+    .section-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      letter-spacing: -.5px; line-height: 1.2;
+    }
+    .section-sub {
+      font-size: 1.05rem; color: var(--text2); margin-top: 14px; max-width: 540px;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+
+    /* ── Nav ────────────────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(6,11,24,.8); border-bottom: 1px solid rgba(26,40,64,.6);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px; background: linear-gradient(135deg,var(--accent),#00BFA5);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; color: #050B14;
+    }
+    .nav-logo-text { font-weight: 800; font-size: 1.1rem; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a {
+      color: var(--text2); font-size: .9rem; font-weight: 500;
+      padding: 7px 14px; border-radius: 10px; transition: all .15s;
+    }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.05); }
+    @media(max-width:640px){ .nav-links { display: none; } }
+
+    /* ── Hero ───────────────────────────────────────────────── */
+    .hero {
+      padding: 140px 0 100px;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 45% at 50% -5%, rgba(0,230,118,.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%, rgba(139,92,246,.08) 0%, transparent 70%);
+    }
+    .hero-badge { margin-bottom: 24px; }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 900; letter-spacing: -1.5px; line-height: 1.1;
+      margin-bottom: 22px;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--text2); max-width: 560px; margin: 0 auto 36px;
+    }
+    .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 72px; flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat-num {
+      font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: var(--text);
+    }
+    .hero-stat-num span { color: var(--accent); }
+    .hero-stat-label { font-size: .8rem; color: var(--text3); margin-top: 2px; font-weight: 500; }
+
+    /* ── Phone Mockup ───────────────────────────────────────── */
+    .phone-wrap {
+      margin: 72px auto 0; max-width: 280px; position: relative;
+    }
+    .phone {
+      background: #0A1628; border-radius: 44px; padding: 14px;
+      border: 2px solid #1E3050;
+      box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(0,230,118,.08);
+      position: relative; overflow: hidden;
+    }
+    .phone::before {
+      content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 90px; height: 28px; background: #0A1628;
+      border-radius: 0 0 18px 18px; z-index: 10;
+    }
+    .phone-screen {
+      background: #060B18; border-radius: 34px; overflow: hidden;
+      aspect-ratio: 9/19; padding: 40px 18px 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .ps-top { display: flex; justify-content: space-between; align-items: center; }
+    .ps-avatar {
+      width: 38px; height: 38px; background: linear-gradient(135deg,var(--accent),#00BFA5);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 900; color: #050B14;
+    }
+    .ps-title { font-size: .7rem; font-weight: 700; color: var(--text); }
+    .ps-sub { font-size: .6rem; color: var(--text3); margin-top: 1px; }
+    .ps-bubble {
+      padding: 10px 14px; border-radius: 16px; font-size: .65rem; line-height: 1.4; max-width: 82%;
+    }
+    .ps-bubble.ai {
+      background: #0C1E38; color: var(--text2); border-radius: 4px 16px 16px 16px;
+      align-self: flex-start;
+    }
+    .ps-bubble.user {
+      background: rgba(0,230,118,.15); color: var(--accent);
+      border: 1px solid rgba(0,230,118,.2);
+      border-radius: 16px 4px 16px 16px; align-self: flex-end;
+    }
+    .ps-score {
+      background: rgba(0,230,118,.08); border: 1px solid rgba(0,230,118,.2);
+      border-radius: 12px; padding: 10px 14px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ps-score-label { font-size: .6rem; color: var(--text3); }
+    .ps-score-num { font-size: 1.2rem; font-weight: 900; color: var(--accent); }
+    .ps-mic {
+      background: linear-gradient(135deg,var(--accent),#00BFA5);
+      height: 42px; border-radius: 14px; margin-top: auto;
+      display: flex; align-items: center; justify-content: center;
+      color: #050B14; font-size: .7rem; font-weight: 800; gap: 6px;
+    }
+    /* Floating glow */
+    .phone-wrap::before {
+      content: ''; position: absolute;
+      inset: -30px; border-radius: 80px;
+      background: radial-gradient(ellipse, rgba(0,230,118,.12) 0%, transparent 70%);
+      pointer-events: none; z-index: -1;
+    }
+    /* Animated ring */
+    @keyframes ring-pulse {
+      0%,100% { opacity:.4; transform: scale(1); }
+      50% { opacity:.1; transform: scale(1.1); }
+    }
+    .phone-ring {
+      position: absolute; inset: -20px; border-radius: 65px;
+      border: 1px solid rgba(0,230,118,.15);
+      animation: ring-pulse 3s ease-in-out infinite;
+    }
+
+    /* ── Logos / Trusted ────────────────────────────────────── */
+    .trusted {
+      padding: 40px 0; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .trusted-label {
+      text-align: center; font-size: .78rem; color: var(--text3);
+      font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .trusted-list {
+      display: flex; justify-content: center; align-items: center;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .trusted-item {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--text3); font-size: .85rem; font-weight: 600;
+    }
+    .trusted-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+
+    /* ── Features ───────────────────────────────────────────── */
+    .features { padding: 100px 0; }
+    .features-head { text-align: center; margin-bottom: 60px; }
+    .features-head .section-sub { margin: 14px auto 0; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .feature-card:hover { border-color: rgba(0,230,118,.3); transform: translateY(-4px); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 18px;
+    }
+    .feature-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-desc { font-size: .9rem; color: var(--text2); line-height: 1.6; }
+
+    /* ── How It Works ───────────────────────────────────────── */
+    .hiw { padding: 80px 0; }
+    .hiw-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    @media(max-width:768px){ .hiw-inner { grid-template-columns: 1fr; gap: 40px; } }
+    .hiw-steps { display: flex; flex-direction: column; gap: 8px; }
+    .hiw-step {
+      display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+      padding: 20px; border-radius: 16px; border: 1px solid transparent;
+      transition: all .2s; cursor: default;
+    }
+    .hiw-step:hover { background: var(--surface); border-color: var(--border); }
+    .hiw-step-num {
+      width: 48px; height: 48px; border-radius: 14px;
+      font-size: 1.2rem; font-weight: 900; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .hiw-step-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .hiw-step-desc { font-size: .88rem; color: var(--text2); line-height: 1.6; }
+    .hiw-visual {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 24px; padding: 32px; position: relative; overflow: hidden;
+    }
+    .hiw-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(0,230,118,.08), transparent 60%);
+      pointer-events: none;
+    }
+    .wave-bars {
+      display: flex; align-items: flex-end; gap: 5px;
+      height: 80px; margin: 20px 0;
+    }
+    .wave-bar {
+      flex: 1; background: linear-gradient(to top,var(--accent),rgba(0,230,118,.3));
+      border-radius: 4px 4px 0 0;
+      animation: wave 1.4s ease-in-out infinite;
+    }
+    @keyframes wave {
+      0%,100% { transform: scaleY(1); }
+      50% { transform: scaleY(.4); }
+    }
+    .wave-bar:nth-child(1){ animation-delay:.0s; height: 60%; }
+    .wave-bar:nth-child(2){ animation-delay:.1s; height: 100%; }
+    .wave-bar:nth-child(3){ animation-delay:.2s; height: 70%; }
+    .wave-bar:nth-child(4){ animation-delay:.3s; height: 85%; }
+    .wave-bar:nth-child(5){ animation-delay:.4s; height: 45%; }
+    .wave-bar:nth-child(6){ animation-delay:.5s; height: 90%; }
+    .wave-bar:nth-child(7){ animation-delay:.6s; height: 65%; }
+    .wave-bar:nth-child(8){ animation-delay:.7s; height: 55%; }
+    .feedback-card {
+      background: #060B18; border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px; margin-top: 16px;
+    }
+    .feedback-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .feedback-label { font-size: .78rem; color: var(--text3); font-weight: 600; }
+    .feedback-val { font-size: .78rem; font-weight: 700; color: var(--accent); }
+    .feedback-bar-track {
+      height: 6px; background: var(--border); border-radius: 3px; margin-bottom: 10px;
+    }
+    .feedback-bar-fill {
+      height: 6px; border-radius: 3px;
+      background: linear-gradient(90deg,var(--accent),#00BFA5);
+    }
+
+    /* ── Pricing ────────────────────────────────────────────── */
+    .pricing { padding: 100px 0; }
+    .pricing-head { text-align: center; margin-bottom: 60px; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px; max-width: 700px; margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px; position: relative; overflow: hidden;
+      transition: transform .2s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); }
+    .pricing-card.popular {
+      border-color: rgba(0,230,118,.4);
+      background: linear-gradient(135deg,rgba(0,230,118,.04),var(--surface));
+    }
+    .popular-tag {
+      position: absolute; top: 0; right: 0;
+      background: linear-gradient(135deg,var(--accent),#00BFA5);
+      color: #050B14; font-size: .68rem; font-weight: 800; letter-spacing: .8px;
+      padding: 5px 16px; border-radius: 0 var(--radius) 0 14px;
+      text-transform: uppercase;
+    }
+    .plan-name { font-size: .8rem; font-weight: 700; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+    .plan-price { font-size: 3rem; font-weight: 900; letter-spacing: -2px; color: var(--text); }
+    .plan-price sup { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; vertical-align: super; }
+    .plan-period { font-size: .85rem; color: var(--text3); margin-bottom: 4px; }
+    .plan-trial { font-size: .8rem; color: var(--accent); font-weight: 600; margin-bottom: 24px; }
+    .plan-divider { height: 1px; background: var(--border); margin-bottom: 24px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .plan-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: .88rem; color: var(--text2);
+    }
+    .plan-features li .check {
+      width: 20px; height: 20px; border-radius: 6px;
+      background: rgba(0,230,118,.1); display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0; font-size: .7rem;
+    }
+    .plan-features li.missing { color: var(--text3); }
+    .plan-features li.missing .check { background: rgba(255,255,255,.04); }
+    .plan-cta {
+      display: block; text-align: center; margin-top: 28px;
+      padding: 13px; border-radius: 12px; font-weight: 700; font-size: .95rem;
+      transition: all .18s;
+    }
+    .plan-cta-primary {
+      background: linear-gradient(135deg,var(--accent),#00BFA5);
+      color: #050B14;
+    }
+    .plan-cta-primary:hover { box-shadow: 0 8px 28px rgba(0,230,118,.35); }
+    .plan-cta-ghost {
+      background: transparent; border: 1px solid var(--border); color: var(--text2);
+    }
+    .plan-cta-ghost:hover { border-color: var(--text3); color: var(--text); }
+
+    /* ── CTA Banner ─────────────────────────────────────────── */
+    .cta-banner {
+      margin: 60px 0; padding: 70px 40px;
+      background: linear-gradient(135deg, #0D1F35 0%, #0A1A2E 100%);
+      border: 1px solid var(--border); border-radius: 28px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .cta-banner::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 50% 80% at 50% 0%, rgba(0,230,118,.07), transparent 70%);
+    }
+    .cta-banner h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.5px; }
+    .cta-banner p { color: var(--text2); margin: 14px auto 32px; max-width: 480px; font-size: 1.05rem; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    /* Play Store button */
+    .play-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #fff; color: #000;
+      padding: 12px 22px; border-radius: 12px; font-weight: 700;
+      font-size: .9rem; transition: all .18s;
+    }
+    .play-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,255,255,.15); }
+    .play-btn-icon { font-size: 1.6rem; }
+    .play-btn-sub { font-size: .65rem; font-weight: 500; line-height: 1; opacity: .7; }
+    .play-btn-name { font-size: 1rem; font-weight: 800; line-height: 1; }
+
+    /* ── Footer ─────────────────────────────────────────────── */
+    footer {
+      padding: 48px 0 32px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 32px;
+    }
+    .footer-brand { max-width: 260px; }
+    .footer-tagline { font-size: .875rem; color: var(--text3); margin-top: 10px; line-height: 1.6; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: .875rem; color: var(--text3); font-weight: 500; transition: color .15s;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy {
+      margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border);
+      font-size: .8rem; color: var(--text3); text-align: center;
+    }
+
+    /* ── Animations ─────────────────────────────────────────── */
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    .float { animation: float 4s ease-in-out infinite; }
+    @keyframes fade-up {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .fade-up { animation: fade-up .7s ease both; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media(max-width:640px){
+      .hero { padding: 110px 0 70px; }
+      .features, .pricing { padding: 70px 0; }
+      .cta-banner { padding: 48px 24px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-icon">B</div>
+        <span class="nav-logo-text">Bol AI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://bol-ai.onrender.com/privacy" target="_blank">Privacy</a>
+      </div>
+      <a href="#download" class="btn btn-primary" style="font-size:.875rem;padding:10px 20px;">
+        Download Free
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-badge fade-up">
+        <span>🇮🇳</span> Built for India's 600M English learners
+      </div>
+      <h1 class="fade-up delay-1">
+        Practice English.<br />
+        <span class="accent">Sound Confident.</span>
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Bol AI is your personal AI speaking coach. Have real conversations, get instant feedback, and build fluency — one session at a time.
+      </p>
+      <div class="hero-cta fade-up delay-3">
+        <a href="#download" class="btn btn-primary">
+          ▶ &nbsp;Start Free Trial
+        </a>
+        <a href="#features" class="btn btn-ghost">See Features</a>
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="phone-wrap float fade-up delay-4">
+        <div class="phone-ring"></div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ps-top">
+              <div>
+                <div class="ps-title">Coffee Shop</div>
+                <div class="ps-sub">AI Conversation · Medium</div>
+              </div>
+              <div class="ps-avatar">B</div>
+            </div>
+            <div class="ps-bubble ai">
+              Hi! What can I get for you today? We have a great new seasonal special — a caramel latte!
+            </div>
+            <div class="ps-bubble user">
+              Could I have a large cappuccino, please? And maybe one of those croissants?
+            </div>
+            <div class="ps-bubble ai">
+              Great choice! That'll be ₹320. Your name for the order?
+            </div>
+            <div class="ps-score">
+              <div>
+                <div class="ps-score-label">Fluency Score</div>
+              </div>
+              <div class="ps-score-num">88</div>
+            </div>
+            <div class="ps-mic">🎙 &nbsp; Tap to Speak</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="hero-stats fade-up delay-4">
+        <div class="hero-stat">
+          <div class="hero-stat-num">6<span>+</span></div>
+          <div class="hero-stat-label">Practice Modes</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num"><span>₹</span>0</div>
+          <div class="hero-stat-label">To Start Free</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">7<span>-day</span></div>
+          <div class="hero-stat-label">Free Pro Trial</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">AI<span>⚡</span></div>
+          <div class="hero-stat-label">GPT-4o Feedback</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Trusted By ────────────────────────────────────────── -->
+  <div class="trusted">
+    <div class="container">
+      <div class="trusted-label">Powered by world-class AI</div>
+      <div class="trusted-list">
+        <div class="trusted-item"><div class="trusted-icon">🤖</div> OpenAI GPT-4o</div>
+        <div class="trusted-item"><div class="trusted-icon">🎙</div> OpenAI Whisper</div>
+        <div class="trusted-item"><div class="trusted-icon">🔐</div> Supabase Auth</div>
+        <div class="trusted-item"><div class="trusted-icon">☁</div> Cloud-Hosted</div>
+        <div class="trusted-item"><div class="trusted-icon">🇮🇳</div> Made in India</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Features ──────────────────────────────────────────── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="features-head">
+        <div class="section-label">What You Get</div>
+        <div class="section-title">Everything you need to<br /><span class="accent">master spoken English</span></div>
+        <p class="section-sub">Six powerful practice modes, all powered by real AI — not scripts.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,230,118,.1)">🎙</div>
+          <div class="feature-title">Daily Speaking Challenges</div>
+          <div class="feature-desc">Answer a new topic every day. Get detailed AI feedback on fluency, grammar, vocabulary, and confidence — like having a personal coach.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(0,188,212,.1)">💬</div>
+          <div class="feature-title">AI Conversations</div>
+          <div class="feature-desc">Practice real scenarios: coffee shop, job interview, travel, presentations. Choose Easy, Medium, or Hard and have full voice conversations with AI.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(139,92,246,.1)">🎯</div>
+          <div class="feature-title">Pronunciation Coach</div>
+          <div class="feature-desc">Record yourself saying words. AI compares your pronunciation word-by-word and gives you a score with specific corrections.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(245,158,11,.1)">📖</div>
+          <div class="feature-title">Word of the Day</div>
+          <div class="feature-desc">Build your vocabulary every day. Learn the word in context, hear it pronounced, then practice using it in your own sentences with AI evaluation.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(239,68,68,.1)">📓</div>
+          <div class="feature-title">Grammar Error Journal</div>
+          <div class="feature-desc">Every grammar mistake you make is saved and explained. Review past errors, search by type, and track your improvement over time.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:rgba(16,185,129,.1)">🤖</div>
+          <div class="feature-title">AI Tutor Chat</div>
+          <div class="feature-desc">Ask anything about English grammar, usage, or pronunciation. Your personal AI tutor is available 24/7, responds in seconds.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works ──────────────────────────────────────── -->
+  <section class="hiw" id="how-it-works">
+    <div class="container">
+      <div class="hiw-inner">
+        <div>
+          <div class="section-label">How It Works</div>
+          <div class="section-title">Speak. Get feedback.<br /><span class="accent">Improve daily.</span></div>
+          <p class="section-sub" style="margin-bottom:36px">
+            No boring textbooks. No waiting for a human tutor. Just you, a mic, and real AI feedback in seconds.
+          </p>
+          <div class="hiw-steps">
+            <div class="hiw-step">
+              <div class="hiw-step-num" style="background:rgba(0,230,118,.1);color:var(--accent)">1</div>
+              <div>
+                <div class="hiw-step-title">Pick a mode & start speaking</div>
+                <div class="hiw-step-desc">Choose a daily challenge, conversation scenario, or pronunciation set — then tap the mic and speak naturally.</div>
+              </div>
+            </div>
+            <div class="hiw-step">
+              <div class="hiw-step-num" style="background:rgba(0,188,212,.1);color:var(--accent2)">2</div>
+              <div>
+                <div class="hiw-step-title">AI analyses your speech instantly</div>
+                <div class="hiw-step-desc">Whisper transcribes your voice. GPT-4o evaluates fluency, grammar, vocabulary, and confidence in under 3 seconds.</div>
+              </div>
+            </div>
+            <div class="hiw-step">
+              <div class="hiw-step-num" style="background:rgba(139,92,246,.1);color:var(--purple)">3</div>
+              <div>
+                <div class="hiw-step-title">Track your streak & grow</div>
+                <div class="hiw-step-desc">Every session builds your streak. Watch your fluency score climb. Review errors in your Grammar Journal. Get better every day.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hiw-visual">
+          <div class="section-label" style="margin-bottom:8px">Live AI Feedback</div>
+          <div style="font-size:.85rem;color:var(--text3)">Recording your voice...</div>
+          <div class="wave-bars">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-row"><span class="feedback-label">Fluency</span><span class="feedback-val">88%</span></div>
+            <div class="feedback-bar-track"><div class="feedback-bar-fill" style="width:88%"></div></div>
+            <div class="feedback-row"><span class="feedback-label">Grammar</span><span class="feedback-val">92%</span></div>
+            <div class="feedback-bar-track"><div class="feedback-bar-fill" style="width:92%;background:linear-gradient(90deg,var(--accent2),var(--accent))"></div></div>
+            <div class="feedback-row"><span class="feedback-label">Vocabulary</span><span class="feedback-val">76%</span></div>
+            <div class="feedback-bar-track"><div class="feedback-bar-fill" style="width:76%;background:linear-gradient(90deg,var(--purple),var(--accent2))"></div></div>
+            <div style="margin-top:14px;font-size:.78rem;color:var(--text2);line-height:1.6;border-top:1px solid var(--border);padding-top:14px">
+              💡 <strong style="color:var(--text)">Tip:</strong> Great use of "could I have" — very polite! Try adding "please" at the end for even more natural flow.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ───────────────────────────────────────────── -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="pricing-head">
+        <div class="section-label">Simple Pricing</div>
+        <div class="section-title">Start free. Upgrade when<br /><span class="accent">you're ready.</span></div>
+        <p class="section-sub" style="margin:14px auto 0">7-day free trial on Pro. No credit card needed to start.</p>
+      </div>
+      <div class="pricing-grid">
+        <!-- Free -->
+        <div class="pricing-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-price"><sup></sup>₹0</div>
+          <div class="plan-period">forever</div>
+          <div class="plan-trial" style="color:var(--text3)">No credit card needed</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check" style="color:var(--accent)">✓</span> 1 daily challenge</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> 1 conversation/day</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> Basic feedback</li>
+            <li class="missing"><span class="check">✗</span> Pronunciation Coach</li>
+            <li class="missing"><span class="check">✗</span> Grammar Journal</li>
+            <li class="missing"><span class="check">✗</span> AI Tutor</li>
+          </ul>
+          <a href="#download" class="plan-cta plan-cta-ghost">Download Free</a>
+        </div>
+        <!-- Pro -->
+        <div class="pricing-card popular">
+          <div class="popular-tag">⚡ 7-day free trial</div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-price"><sup>₹</sup>199</div>
+          <div class="plan-period">/month &nbsp;·&nbsp; or ₹1,499/year (save 37%)</div>
+          <div class="plan-trial">Start free — no charge for 7 days</div>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li><span class="check" style="color:var(--accent)">✓</span> Unlimited challenges</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> All conversation scenarios</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> Easy / Medium / Hard difficulty</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> Pronunciation Coach</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> Word of the Day + Vocab</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> Grammar Error Journal</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> AI Tutor (24/7)</li>
+            <li><span class="check" style="color:var(--accent)">✓</span> Full analytics & streak</li>
+          </ul>
+          <a href="#download" class="plan-cta plan-cta-primary">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Download CTA ──────────────────────────────────────── -->
+  <section id="download">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="section-label">Available on Android</div>
+        <h2>Start your free trial today.<br /><span class="accent">No excuses.</span></h2>
+        <p>Join thousands of Indian learners already practicing English with Bol AI. 7 days free, cancel anytime.</p>
+        <div class="cta-buttons">
+          <a href="https://play.google.com/store" target="_blank" class="play-btn">
+            <span class="play-btn-icon">▶</span>
+            <div>
+              <div class="play-btn-sub">GET IT ON</div>
+              <div class="play-btn-name">Google Play</div>
+            </div>
+          </a>
+        </div>
+        <div style="margin-top:20px;font-size:.8rem;color:var(--text3)">
+          🔒 Payments through Google Pay · UPI · Cards · Netbanking
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <div class="nav-logo-icon">B</div>
+            <span class="nav-logo-text">Bol AI</span>
+          </div>
+          <p class="footer-tagline">
+            India's smartest AI English speaking coach. Practice real conversations, get instant feedback, build confidence.
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="https://bol-ai.onrender.com/privacy" target="_blank">Privacy Policy</a>
+          <a href="https://bol-ai.onrender.com/terms" target="_blank">Terms of Service</a>
+          <a href="mailto:riteshkumarsingh821310@gmail.com">Contact</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        &copy; 2025 Bol AI · Made with ❤️ in India · <a href="mailto:riteshkumarsingh821310@gmail.com" style="color:var(--accent)">riteshkumarsingh821310@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
