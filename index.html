@@ -3,1063 +3,485 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bol AI – Practice English. Sound Confident.</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Bol AI — Practice English. Sound Confident.</title>
     <meta name="description"
-        content="Bol AI is India's smartest English speaking coach. Practice real conversations, get AI feedback, and build fluency — at your own pace." />
-    <meta property="og:title" content="Bol AI – Practice English. Sound Confident." />
+        content="Bol AI is India's smartest AI English speaking coach. Practice real conversations, get instant feedback, and build fluency — one session at a time." />
+    <meta property="og:title" content="Bol AI — Practice English. Sound Confident." />
     <meta property="og:description"
-        content="India's smartest AI English speaking coach. Real conversations, instant feedback." />
-    <meta property="og:type" content="website" />
+        content="India's AI English speaking coach. Real conversations, instant feedback, zero judgment." />
+    <meta property="og:image" content="https://getbolai.com/logo.png" />
     <meta property="og:url" content="https://getbolai.com" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet" />
     <style>
-        /* ── Reset & Base ───────────────────────────────────────── */
         *,
         *::before,
         *::after {
             box-sizing: border-box;
             margin: 0;
-            padding: 0;
+            padding: 0
         }
 
         :root {
             --bg: #060B18;
             --surface: #0C1624;
+            --surface2: #0F1D2E;
             --border: #1A2840;
+            --border2: #243652;
             --accent: #00E676;
-            --accent2: #00BCD4;
+            --accent-dim: rgba(0, 230, 118, .12);
+            --accent-glow: rgba(0, 230, 118, .25);
+            --cyan: #00BCD4;
             --purple: #8B5CF6;
             --text: #F1F5F9;
             --text2: #94A3B8;
             --text3: #475569;
-            --radius: 18px;
+            --text4: #2D4060;
+            --radius: 20px;
+            --radius-sm: 12px;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            line-height: 1.65;
+            overflow-x: hidden
         }
 
         a {
             color: inherit;
-            text-decoration: none;
+            text-decoration: none
         }
 
         img {
             max-width: 100%;
-            display: block;
+            display: block
         }
 
-        /* ── Scrollbar ──────────────────────────────────────────── */
         ::-webkit-scrollbar {
-            width: 6px;
+            width: 5px
         }
 
         ::-webkit-scrollbar-track {
-            background: var(--bg);
+            background: var(--bg)
         }
 
         ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
+            background: var(--border2);
+            border-radius: 3px
         }
 
-        /* ── Utility ────────────────────────────────────────────── */
+        /* ── Layout ── */
         .container {
-            max-width: 1100px;
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px
         }
 
-        .accent {
-            color: var(--accent);
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 230, 118, .1);
-            border: 1px solid rgba(0, 230, 118, .25);
-            color: var(--accent);
+        .section-eyebrow {
             font-size: .72rem;
             font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 20px;
-            letter-spacing: .8px;
-            text-transform: uppercase;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: inherit;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 14px;
-            padding: 14px 28px;
-            transition: transform .18s, box-shadow .18s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), #00BFA5);
-            color: #050B14;
-            box-shadow: 0 8px 32px rgba(0, 230, 118, .3);
-        }
-
-        .btn-primary:hover {
-            box-shadow: 0 12px 40px rgba(0, 230, 118, .45);
-        }
-
-        .btn-ghost {
-            background: rgba(255, 255, 255, .05);
-            color: var(--text2);
-            border: 1px solid var(--border);
-        }
-
-        .btn-ghost:hover {
-            background: rgba(255, 255, 255, .09);
-        }
-
-        .section-label {
-            font-size: .72rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 14px
         }
 
         .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.9rem, 4vw, 2.9rem);
             font-weight: 800;
-            letter-spacing: -.5px;
-            line-height: 1.2;
+            letter-spacing: -.6px;
+            line-height: 1.15
         }
 
-        .section-sub {
+        .section-body {
             font-size: 1.05rem;
             color: var(--text2);
             margin-top: 14px;
-            max-width: 540px;
+            max-width: 560px;
+            line-height: 1.7
         }
 
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: .95rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 14px;
+            padding: 14px 26px;
+            transition: all .2s;
+            white-space: nowrap
         }
 
-        /* ── Nav ────────────────────────────────────────────────── */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, #00BFA5 100%);
+            color: #040D17;
+            box-shadow: 0 6px 28px var(--accent-glow)
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 36px rgba(0, 230, 118, .4)
+        }
+
+        .btn-ghost {
+            background: rgba(255, 255, 255, .04);
+            color: var(--text2);
+            border: 1px solid var(--border2)
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, .08);
+            color: var(--text);
+            border-color: var(--border2)
+        }
+
+        /* ── Nav ── */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 100;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(6, 11, 24, .8);
-            border-bottom: 1px solid rgba(26, 40, 64, .6);
+            z-index: 200;
+            transition: background .3s, border .3s
+        }
+
+        .nav.scrolled {
+            background: rgba(6, 11, 24, .92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(26, 40, 64, .7)
         }
 
         .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 64px;
+            height: 68px
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 11px
         }
 
         .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .nav-logo-icon {
             width: 36px;
             height: 36px;
-            background: linear-gradient(135deg, var(--accent), #00BFA5);
             border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1rem;
-            color: #050B14;
+            object-fit: cover
         }
 
-        .nav-logo-text {
+        .nav-name {
             font-weight: 800;
             font-size: 1.1rem;
+            letter-spacing: -.3px
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px
         }
 
         .nav-links a {
             color: var(--text2);
             font-size: .9rem;
             font-weight: 500;
-            padding: 7px 14px;
+            padding: 7px 15px;
             border-radius: 10px;
-            transition: all .15s;
+            transition: all .15s
         }
 
         .nav-links a:hover {
             color: var(--text);
-            background: rgba(255, 255, 255, .05);
+            background: rgba(255, 255, 255, .05)
         }
 
-        @media(max-width:640px) {
+        .nav-cta {
+            font-size: .875rem;
+            padding: 10px 22px
+        }
+
+        @media(max-width:768px) {
             .nav-links {
-                display: none;
+                display: none
+            }
+
+            .nav-cta {
+                padding: 9px 18px;
+                font-size: .82rem
             }
         }
 
-        /* ── Hero ───────────────────────────────────────────────── */
+        /* ── Hero ── */
         .hero {
-            padding: 140px 0 100px;
+            padding: 148px 0 100px;
             position: relative;
-            overflow: hidden;
             text-align: center;
+            overflow: hidden
         }
 
-        .hero-glow {
+        .hero-gradient {
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background:
-                radial-gradient(ellipse 60% 45% at 50% -5%, rgba(0, 230, 118, .15) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 30% at 80% 80%, rgba(139, 92, 246, .08) 0%, transparent 70%);
+            background: radial-gradient(ellipse 70% 55% at 50% -10%, rgba(0, 230, 118, .13) 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 85% 90%, rgba(139, 92, 246, .07) 0%, transparent 60%);
         }
 
-        .hero-badge {
-            margin-bottom: 24px;
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 230, 118, .08);
+            border: 1px solid rgba(0, 230, 118, .2);
+            border-radius: 100px;
+            padding: 6px 16px;
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 28px;
+            letter-spacing: .3px
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-size: clamp(2.6rem, 6.5vw, 4.6rem);
             font-weight: 900;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 22px;
+            letter-spacing: -2px;
+            line-height: 1.08;
+            margin-bottom: 22px
+        }
+
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
         }
 
         .hero-sub {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-size: clamp(1rem, 2vw, 1.18rem);
             color: var(--text2);
-            max-width: 560px;
-            margin: 0 auto 36px;
+            max-width: 540px;
+            margin: 0 auto 38px;
+            line-height: 1.75
         }
 
-        .hero-cta {
+        .hero-btns {
             display: flex;
             gap: 14px;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap
         }
 
-        .hero-stats {
+        .hero-trust {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 48px;
-            margin-top: 72px;
-            flex-wrap: wrap;
-        }
-
-        .hero-stat-num {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: -1px;
-            color: var(--text);
-        }
-
-        .hero-stat-num span {
-            color: var(--accent);
-        }
-
-        .hero-stat-label {
+            gap: 8px;
+            margin-top: 28px;
             font-size: .8rem;
-            color: var(--text3);
-            margin-top: 2px;
-            font-weight: 500;
+            color: var(--text3)
         }
 
-        /* ── Phone Mockup ───────────────────────────────────────── */
-        .phone-wrap {
+        .hero-trust-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--text4)
+        }
+
+        /* Phone mockup */
+        .mockup-wrap {
             margin: 72px auto 0;
-            max-width: 280px;
-            position: relative;
+            max-width: 260px;
+            position: relative
         }
 
-        .phone {
-            background: #0A1628;
-            border-radius: 44px;
-            padding: 14px;
-            border: 2px solid #1E3050;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, .6), 0 0 0 1px rgba(0, 230, 118, .08);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .phone::before {
-            content: '';
+        .mockup-glow {
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90px;
-            height: 28px;
-            background: #0A1628;
-            border-radius: 0 0 18px 18px;
-            z-index: 10;
-        }
-
-        .phone-screen {
-            background: #060B18;
-            border-radius: 34px;
-            overflow: hidden;
-            aspect-ratio: 9/19;
-            padding: 40px 18px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .ps-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ps-avatar {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, var(--accent), #00BFA5);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: .8rem;
-            font-weight: 900;
-            color: #050B14;
-        }
-
-        .ps-title {
-            font-size: .7rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .ps-sub {
-            font-size: .6rem;
-            color: var(--text3);
-            margin-top: 1px;
-        }
-
-        .ps-bubble {
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: .65rem;
-            line-height: 1.4;
-            max-width: 82%;
-        }
-
-        .ps-bubble.ai {
-            background: #0C1E38;
-            color: var(--text2);
-            border-radius: 4px 16px 16px 16px;
-            align-self: flex-start;
-        }
-
-        .ps-bubble.user {
-            background: rgba(0, 230, 118, .15);
-            color: var(--accent);
-            border: 1px solid rgba(0, 230, 118, .2);
-            border-radius: 16px 4px 16px 16px;
-            align-self: flex-end;
-        }
-
-        .ps-score {
-            background: rgba(0, 230, 118, .08);
-            border: 1px solid rgba(0, 230, 118, .2);
-            border-radius: 12px;
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .ps-score-label {
-            font-size: .6rem;
-            color: var(--text3);
-        }
-
-        .ps-score-num {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--accent);
-        }
-
-        .ps-mic {
-            background: linear-gradient(135deg, var(--accent), #00BFA5);
-            height: 42px;
-            border-radius: 14px;
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #050B14;
-            font-size: .7rem;
-            font-weight: 800;
-            gap: 6px;
-        }
-
-        /* Floating glow */
-        .phone-wrap::before {
-            content: '';
-            position: absolute;
-            inset: -30px;
+            inset: -40px;
             border-radius: 80px;
-            background: radial-gradient(ellipse, rgba(0, 230, 118, .12) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: -1;
+            background: radial-gradient(ellipse, rgba(0, 230, 118, .1), transparent 70%);
+            z-index: -1
         }
 
-        /* Animated ring */
-        @keyframes ring-pulse {
+        .mockup-ring {
+            position: absolute;
+            inset: -18px;
+            border-radius: 62px;
+            border: 1px solid rgba(0, 230, 118, .12);
+            animation: ringPulse 3.5s ease-in-out infinite
+        }
+
+        @keyframes ringPulse {
 
             0%,
             100% {
-                opacity: .4;
-                transform: scale(1);
+                opacity: .5;
+                transform: scale(1)
             }
 
             50% {
                 opacity: .1;
-                transform: scale(1.1);
+                transform: scale(1.07)
             }
         }
 
-        .phone-ring {
-            position: absolute;
-            inset: -20px;
-            border-radius: 65px;
-            border: 1px solid rgba(0, 230, 118, .15);
-            animation: ring-pulse 3s ease-in-out infinite;
-        }
-
-        /* ── Logos / Trusted ────────────────────────────────────── */
-        .trusted {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .trusted-label {
-            text-align: center;
-            font-size: .78rem;
-            color: var(--text3);
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .trusted-list {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-
-        .trusted-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text3);
-            font-size: .85rem;
-            font-weight: 600;
-        }
-
-        .trusted-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-
-        /* ── Features ───────────────────────────────────────────── */
-        .features {
-            padding: 100px 0;
-        }
-
-        .features-head {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .features-head .section-sub {
-            margin: 14px auto 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 28px;
-            transition: border-color .2s, transform .2s;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(0, 230, 118, .3);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 18px;
-        }
-
-        .feature-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .feature-desc {
-            font-size: .9rem;
-            color: var(--text2);
-            line-height: 1.6;
-        }
-
-        /* ── How It Works ───────────────────────────────────────── */
-        .hiw {
-            padding: 80px 0;
-        }
-
-        .hiw-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        @media(max-width:768px) {
-            .hiw-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-        }
-
-        .hiw-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .hiw-step {
-            display: grid;
-            grid-template-columns: 48px 1fr;
-            gap: 16px;
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid transparent;
-            transition: all .2s;
-            cursor: default;
-        }
-
-        .hiw-step:hover {
-            background: var(--surface);
-            border-color: var(--border);
-        }
-
-        .hiw-step-num {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hiw-step-title {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .hiw-step-desc {
-            font-size: .88rem;
-            color: var(--text2);
-            line-height: 1.6;
-        }
-
-        .hiw-visual {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hiw-visual::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at 70% 20%, rgba(0, 230, 118, .08), transparent 60%);
-            pointer-events: none;
-        }
-
-        .wave-bars {
-            display: flex;
-            align-items: flex-end;
-            gap: 5px;
-            height: 80px;
-            margin: 20px 0;
-        }
-
-        .wave-bar {
-            flex: 1;
-            background: linear-gradient(to top, var(--accent), rgba(0, 230, 118, .3));
-            border-radius: 4px 4px 0 0;
-            animation: wave 1.4s ease-in-out infinite;
-        }
-
-        @keyframes wave {
-
-            0%,
-            100% {
-                transform: scaleY(1);
-            }
-
-            50% {
-                transform: scaleY(.4);
-            }
-        }
-
-        .wave-bar:nth-child(1) {
-            animation-delay: .0s;
-            height: 60%;
-        }
-
-        .wave-bar:nth-child(2) {
-            animation-delay: .1s;
-            height: 100%;
-        }
-
-        .wave-bar:nth-child(3) {
-            animation-delay: .2s;
-            height: 70%;
-        }
-
-        .wave-bar:nth-child(4) {
-            animation-delay: .3s;
-            height: 85%;
-        }
-
-        .wave-bar:nth-child(5) {
-            animation-delay: .4s;
-            height: 45%;
-        }
-
-        .wave-bar:nth-child(6) {
-            animation-delay: .5s;
-            height: 90%;
-        }
-
-        .wave-bar:nth-child(7) {
-            animation-delay: .6s;
-            height: 65%;
-        }
-
-        .wave-bar:nth-child(8) {
-            animation-delay: .7s;
-            height: 55%;
-        }
-
-        .feedback-card {
-            background: #060B18;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-
-        .feedback-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .feedback-label {
-            font-size: .78rem;
-            color: var(--text3);
-            font-weight: 600;
-        }
-
-        .feedback-val {
-            font-size: .78rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .feedback-bar-track {
-            height: 6px;
-            background: var(--border);
-            border-radius: 3px;
-            margin-bottom: 10px;
-        }
-
-        .feedback-bar-fill {
-            height: 6px;
-            border-radius: 3px;
-            background: linear-gradient(90deg, var(--accent), #00BFA5);
-        }
-
-        /* ── Pricing ────────────────────────────────────────────── */
-        .pricing {
-            padding: 100px 0;
-        }
-
-        .pricing-head {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .pricing-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 32px;
-            position: relative;
-            overflow: hidden;
-            transition: transform .2s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .pricing-card.popular {
-            border-color: rgba(0, 230, 118, .4);
-            background: linear-gradient(135deg, rgba(0, 230, 118, .04), var(--surface));
-        }
-
-        .popular-tag {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--accent), #00BFA5);
-            color: #050B14;
-            font-size: .68rem;
-            font-weight: 800;
-            letter-spacing: .8px;
-            padding: 5px 16px;
-            border-radius: 0 var(--radius) 0 14px;
-            text-transform: uppercase;
-        }
-
-        .plan-name {
-            font-size: .8rem;
-            font-weight: 700;
-            color: var(--text3);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .plan-price {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -2px;
-            color: var(--text);
-        }
-
-        .plan-price sup {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0;
-            vertical-align: super;
-        }
-
-        .plan-period {
-            font-size: .85rem;
-            color: var(--text3);
-            margin-bottom: 4px;
-        }
-
-        .plan-trial {
-            font-size: .8rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .plan-divider {
-            height: 1px;
-            background: var(--border);
-            margin-bottom: 24px;
-        }
-
-        .plan-features {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .plan-features li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: .88rem;
-            color: var(--text2);
-        }
-
-        .plan-features li .check {
-            width: 20px;
-            height: 20px;
-            border-radius: 6px;
-            background: rgba(0, 230, 118, .1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: .7rem;
-        }
-
-        .plan-features li.missing {
-            color: var(--text3);
-        }
-
-        .plan-features li.missing .check {
-            background: rgba(255, 255, 255, .04);
-        }
-
-        .plan-cta {
-            display: block;
-            text-align: center;
-            margin-top: 28px;
+        .mockup {
+            background: #091422;
+            border-radius: 42px;
             padding: 13px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: .95rem;
-            transition: all .18s;
-        }
-
-        .plan-cta-primary {
-            background: linear-gradient(135deg, var(--accent), #00BFA5);
-            color: #050B14;
-        }
-
-        .plan-cta-primary:hover {
-            box-shadow: 0 8px 28px rgba(0, 230, 118, .35);
-        }
-
-        .plan-cta-ghost {
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--text2);
-        }
-
-        .plan-cta-ghost:hover {
-            border-color: var(--text3);
-            color: var(--text);
-        }
-
-        /* ── CTA Banner ─────────────────────────────────────────── */
-        .cta-banner {
-            margin: 60px 0;
-            padding: 70px 40px;
-            background: linear-gradient(135deg, #0D1F35 0%, #0A1A2E 100%);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            text-align: center;
+            border: 2px solid #1D324A;
+            box-shadow: 0 48px 96px rgba(0, 0, 0, .65), 0 0 0 1px rgba(0, 230, 118, .06);
             position: relative;
-            overflow: hidden;
+            overflow: hidden
         }
 
-        .cta-banner::before {
+        .mockup::after {
             content: '';
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 70%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            width: 88px;
+            height: 26px;
+            background: #091422;
+            border-radius: 0 0 16px 16px;
+            z-index: 1
         }
 
-        .cta-banner::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background: radial-gradient(ellipse 50% 80% at 50% 0%, rgba(0, 230, 118, .07), transparent 70%);
-        }
-
-        .cta-banner h2 {
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 800;
-            letter-spacing: -.5px;
-        }
-
-        .cta-banner p {
-            color: var(--text2);
-            margin: 14px auto 32px;
-            max-width: 480px;
-            font-size: 1.05rem;
-        }
-
-        .cta-buttons {
+        .mockup-screen {
+            background: var(--bg);
+            border-radius: 32px;
+            overflow: hidden;
+            aspect-ratio: 9/19;
+            padding: 38px 16px 18px;
             display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 9px
         }
 
-        /* Play Store button */
-        .play-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: #fff;
-            color: #000;
-            padding: 12px 22px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: .9rem;
-            transition: all .18s;
-        }
-
-        .play-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, .15);
-        }
-
-        .play-btn-icon {
-            font-size: 1.6rem;
-        }
-
-        .play-btn-sub {
-            font-size: .65rem;
-            font-weight: 500;
-            line-height: 1;
-            opacity: .7;
-        }
-
-        .play-btn-name {
-            font-size: 1rem;
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        /* ── Footer ─────────────────────────────────────────────── */
-        footer {
-            padding: 48px 0 32px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-inner {
+        .ms-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 32px;
+            align-items: center
         }
 
-        .footer-brand {
-            max-width: 260px;
+        .ms-info {}
+
+        .ms-scenario {
+            font-size: .68rem;
+            font-weight: 700;
+            color: var(--text)
         }
 
-        .footer-tagline {
-            font-size: .875rem;
+        .ms-mode {
+            font-size: .58rem;
             color: var(--text3);
-            margin-top: 10px;
-            line-height: 1.6;
+            margin-top: 1px
         }
 
-        .footer-links {
+        .ms-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid rgba(0, 230, 118, .2)
+        }
+
+        .ms-avatar-placeholder {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
             display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            font-size: .75rem;
+            font-weight: 900;
+            color: #040D17
         }
 
-        .footer-links a {
-            font-size: .875rem;
-            color: var(--text3);
-            font-weight: 500;
-            transition: color .15s;
+        .ms-bubble {
+            padding: 9px 13px;
+            border-radius: 14px;
+            font-size: .62rem;
+            line-height: 1.45;
+            max-width: 84%
         }
 
-        .footer-links a:hover {
-            color: var(--text);
+        .ms-bubble.ai {
+            background: #0C1E38;
+            color: var(--text2);
+            border-radius: 4px 14px 14px 14px;
+            align-self: flex-start
         }
 
-        .footer-copy {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            font-size: .8rem;
-            color: var(--text3);
-            text-align: center;
+        .ms-bubble.user {
+            background: rgba(0, 230, 118, .13);
+            color: var(--accent);
+            border: 1px solid rgba(0, 230, 118, .2);
+            border-radius: 14px 4px 14px 14px;
+            align-self: flex-end;
+            margin-left: auto
         }
 
-        /* ── Animations ─────────────────────────────────────────── */
+        .ms-score {
+            background: rgba(0, 230, 118, .07);
+            border: 1px solid rgba(0, 230, 118, .18);
+            border-radius: 11px;
+            padding: 9px 13px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .ms-score-label {
+            font-size: .58rem;
+            color: var(--text3)
+        }
+
+        .ms-score-num {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: var(--accent)
+        }
+
+        .ms-mic {
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            height: 40px;
+            border-radius: 12px;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #040D17;
+            font-size: .67rem;
+            font-weight: 800;
+            gap: 5px
+        }
+
         @keyframes float {
 
             0%,
@@ -1068,64 +490,819 @@
             }
 
             50% {
-                transform: translateY(-12px)
+                transform: translateY(-14px)
             }
         }
 
         .float {
-            animation: float 4s ease-in-out infinite;
+            animation: float 4.5s ease-in-out infinite
         }
 
-        @keyframes fade-up {
+        /* Stats row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 20px
+        }
+
+        .stat-block {
+            background: var(--bg);
+            padding: 28px 20px;
+            text-align: center
+        }
+
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, var(--text), var(--text2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .stat-num .hi {
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .stat-label {
+            font-size: .76rem;
+            color: var(--text3);
+            margin-top: 4px;
+            font-weight: 500
+        }
+
+        @media(max-width:640px) {
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        /* ── Logos strip ── */
+        .logos-strip {
+            padding: 36px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface)
+        }
+
+        .logos-label {
+            text-align: center;
+            font-size: .72rem;
+            color: var(--text3);
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 18px
+        }
+
+        .logos-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+            flex-wrap: wrap
+        }
+
+        .logo-pill {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            background: var(--bg);
+            border: 1px solid var(--border2);
+            border-radius: 100px;
+            padding: 8px 18px;
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--text2)
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%
+        }
+
+        /* ── Features ── */
+        .features {
+            padding: 110px 0
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 70px
+        }
+
+        .features-header .section-body {
+            margin: 14px auto 0
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px
+        }
+
+        @media(max-width:900px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:560px) {
+            .features-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .feat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px;
+            transition: all .22s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .feat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-dim) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity .22s
+        }
+
+        .feat-card:hover {
+            border-color: rgba(0, 230, 118, .3);
+            transform: translateY(-5px)
+        }
+
+        .feat-card:hover::before {
+            opacity: 1
+        }
+
+        .feat-icon {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            display: block
+        }
+
+        .feat-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 9px;
+            color: var(--text)
+        }
+
+        .feat-desc {
+            font-size: .875rem;
+            color: var(--text2);
+            line-height: 1.65
+        }
+
+        /* ── How It Works ── */
+        .hiw {
+            padding: 100px 0;
+            background: var(--surface)
+        }
+
+        .hiw-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center
+        }
+
+        @media(max-width:860px) {
+            .hiw-inner {
+                grid-template-columns: 1fr;
+                gap: 50px
+            }
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+        .step {
+            display: flex;
+            gap: 18px;
+            padding: 22px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            transition: all .22s;
+            cursor: default
+        }
+
+        .step:hover {
+            background: var(--bg);
+            border-color: var(--border)
+        }
+
+        .step-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 900;
+            flex-shrink: 0
+        }
+
+        .step-title {
+            font-size: .98rem;
+            font-weight: 700;
+            margin-bottom: 5px
+        }
+
+        .step-desc {
+            font-size: .86rem;
+            color: var(--text2);
+            line-height: 1.65
+        }
+
+        .demo-card {
+            background: var(--bg);
+            border: 1px solid var(--border2);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 50% at 60% 0%, rgba(0, 230, 118, .06), transparent 60%);
+            pointer-events: none
+        }
+
+        .wave-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            height: 72px;
+            margin: 18px 0
+        }
+
+        .bar {
+            flex: 1;
+            border-radius: 4px 4px 0 0;
+            background: linear-gradient(to top, var(--accent), rgba(0, 230, 118, .25));
+            animation: wave 1.5s ease-in-out infinite
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: scaleY(1)
+            }
+
+            50% {
+                transform: scaleY(.35)
+            }
+        }
+
+        .bar:nth-child(1) {
+            height: 55%;
+            animation-delay: .00s
+        }
+
+        .bar:nth-child(2) {
+            height: 100%;
+            animation-delay: .10s
+        }
+
+        .bar:nth-child(3) {
+            height: 72%;
+            animation-delay: .20s
+        }
+
+        .bar:nth-child(4) {
+            height: 88%;
+            animation-delay: .30s
+        }
+
+        .bar:nth-child(5) {
+            height: 44%;
+            animation-delay: .40s
+        }
+
+        .bar:nth-child(6) {
+            height: 92%;
+            animation-delay: .50s
+        }
+
+        .bar:nth-child(7) {
+            height: 66%;
+            animation-delay: .60s
+        }
+
+        .bar:nth-child(8) {
+            height: 52%;
+            animation-delay: .70s
+        }
+
+        .score-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px
+        }
+
+        .score-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 7px
+        }
+
+        .score-label {
+            font-size: .75rem;
+            color: var(--text3);
+            font-weight: 600
+        }
+
+        .score-val {
+            font-size: .75rem;
+            font-weight: 700;
+            color: var(--accent)
+        }
+
+        .score-track {
+            height: 5px;
+            background: var(--border);
+            border-radius: 3px;
+            margin-bottom: 10px
+        }
+
+        .score-fill {
+            height: 5px;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--cyan))
+        }
+
+        .score-tip {
+            font-size: .75rem;
+            color: var(--text2);
+            line-height: 1.6;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+            margin-top: 4px
+        }
+
+        /* ── Pricing ── */
+        .pricing {
+            padding: 110px 0
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 64px
+        }
+
+        .pricing-header .section-body {
+            margin: 14px auto 0
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 720px;
+            margin: 0 auto
+        }
+
+        @media(max-width:640px) {
+            .plans {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .plan {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 34px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .22s
+        }
+
+        .plan:hover {
+            transform: translateY(-5px)
+        }
+
+        .plan.featured {
+            border-color: rgba(0, 230, 118, .35);
+            background: linear-gradient(160deg, rgba(0, 230, 118, .04) 0%, var(--surface) 60%)
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: #040D17;
+            font-size: .66rem;
+            font-weight: 800;
+            letter-spacing: .8px;
+            padding: 5px 18px;
+            border-radius: 0 var(--radius) 0 14px;
+            text-transform: uppercase
+        }
+
+        .plan-tier {
+            font-size: .72rem;
+            font-weight: 700;
+            color: var(--text3);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px
+        }
+
+        .plan-price {
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 1
+        }
+
+        .plan-price-currency {
+            font-size: 1.4rem;
+            font-weight: 700;
+            vertical-align: super;
+            letter-spacing: 0
+        }
+
+        .plan-cadence {
+            font-size: .85rem;
+            color: var(--text3);
+            margin: 5px 0 2px
+        }
+
+        .plan-trial {
+            font-size: .8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px
+        }
+
+        .plan-divider {
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 24px
+        }
+
+        .plan-items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            margin-bottom: 28px
+        }
+
+        .plan-items li {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-size: .875rem;
+            color: var(--text2)
+        }
+
+        .plan-items li.off {
+            color: var(--text3)
+        }
+
+        .check-box {
+            width: 22px;
+            height: 22px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: .72rem
+        }
+
+        .check-y {
+            background: rgba(0, 230, 118, .12);
+            color: var(--accent)
+        }
+
+        .check-n {
+            background: rgba(255, 255, 255, .04);
+            color: var(--text4)
+        }
+
+        .plan-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: .95rem;
+            transition: all .2s
+        }
+
+        .plan-btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            color: #040D17
+        }
+
+        .plan-btn-primary:hover {
+            box-shadow: 0 8px 28px var(--accent-glow)
+        }
+
+        .plan-btn-ghost {
+            background: transparent;
+            border: 1px solid var(--border2);
+            color: var(--text2)
+        }
+
+        .plan-btn-ghost:hover {
+            border-color: var(--text3);
+            color: var(--text)
+        }
+
+        /* ── Download CTA ── */
+        .download {
+            padding: 100px 0
+        }
+
+        .download-card {
+            background: linear-gradient(140deg, #0D2240 0%, #091D35 100%);
+            border: 1px solid var(--border2);
+            border-radius: 28px;
+            padding: 72px 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent)
+        }
+
+        .download-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 70% at 50% -5%, rgba(0, 230, 118, .07), transparent 65%);
+            pointer-events: none
+        }
+
+        .download-logo {
+            width: 72px;
+            height: 72px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            border: 1px solid rgba(0, 230, 118, .2)
+        }
+
+        .download-title {
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -.6px;
+            margin-bottom: 14px
+        }
+
+        .download-sub {
+            color: var(--text2);
+            font-size: 1.05rem;
+            max-width: 460px;
+            margin: 0 auto 38px;
+            line-height: 1.7
+        }
+
+        .download-btns {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap
+        }
+
+        .gplay-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 13px;
+            background: #fff;
+            color: #111;
+            padding: 14px 26px;
+            border-radius: 14px;
+            transition: all .2s
+        }
+
+        .gplay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(255, 255, 255, .14)
+        }
+
+        .gplay-icon {
+            font-size: 1.75rem
+        }
+
+        .gplay-sub {
+            font-size: .62rem;
+            font-weight: 500;
+            opacity: .65;
+            letter-spacing: .3px;
+            text-transform: uppercase
+        }
+
+        .gplay-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            line-height: 1.1
+        }
+
+        .download-note {
+            margin-top: 22px;
+            font-size: .8rem;
+            color: var(--text3)
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding: 56px 0 32px;
+            border-top: 1px solid var(--border)
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px
+        }
+
+        @media(max-width:768px) {
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px
+            }
+        }
+
+        @media(max-width:480px) {
+            .footer-main {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .footer-brand {}
+
+        .footer-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px
+        }
+
+        .footer-brand-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            object-fit: cover
+        }
+
+        .footer-brand-name {
+            font-weight: 800;
+            font-size: 1.05rem
+        }
+
+        .footer-tagline {
+            font-size: .87rem;
+            color: var(--text3);
+            line-height: 1.65;
+            max-width: 240px
+        }
+
+        .footer-col-title {
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text3);
+            margin-bottom: 16px
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 9px
+        }
+
+        .footer-links a {
+            font-size: .87rem;
+            color: var(--text3);
+            font-weight: 500;
+            transition: color .15s
+        }
+
+        .footer-links a:hover {
+            color: var(--accent)
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: gap;
+            font-size: .8rem;
+            color: var(--text3);
+            gap: 10px
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px
+        }
+
+        .footer-bottom-links a {
+            color: var(--text3);
+            transition: color .15s
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--accent)
+        }
+
+        /* ── Scroll animations ── */
+        @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(24px);
+                transform: translateY(28px)
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0)
             }
         }
 
         .fade-up {
-            animation: fade-up .7s ease both;
+            opacity: 0;
+            animation: fadeUp .7s ease forwards
         }
 
-        .delay-1 {
-            animation-delay: .1s;
+        .d1 {
+            animation-delay: .08s
         }
 
-        .delay-2 {
-            animation-delay: .2s;
+        .d2 {
+            animation-delay: .16s
         }
 
-        .delay-3 {
-            animation-delay: .3s;
+        .d3 {
+            animation-delay: .24s
         }
 
-        .delay-4 {
-            animation-delay: .4s;
+        .d4 {
+            animation-delay: .32s
         }
 
-        /* ── Responsive ─────────────────────────────────────────── */
+        .d5 {
+            animation-delay: .40s
+        }
+
         @media(max-width:640px) {
             .hero {
-                padding: 110px 0 70px;
+                padding: 118px 0 80px
             }
 
             .features,
-            .pricing {
-                padding: 70px 0;
+            .pricing,
+            .download {
+                padding: 80px 0
             }
 
-            .cta-banner {
-                padding: 48px 24px;
-            }
-
-            .footer-inner {
-                flex-direction: column;
-                align-items: flex-start;
+            .download-card {
+                padding: 48px 24px
             }
         }
     </style>
@@ -1133,361 +1310,360 @@
 
 <body>
 
-    <!-- ── Nav ──────────────────────────────────────────────── -->
-    <nav class="nav">
+    <!-- NAV -->
+    <nav class="nav" id="navbar">
         <div class="container nav-inner">
-            <a href="/" class="nav-logo">
-                <div class="nav-logo-icon">B</div>
-                <span class="nav-logo-text">Bol AI</span>
+            <a href="/" class="nav-brand">
+                <img src="logo.png" alt="Bol AI Logo" class="nav-logo" />
+                <span class="nav-name">Bol AI</span>
             </a>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How it works</a>
                 <a href="#pricing">Pricing</a>
-                <a href="https://bol-ai.onrender.com/privacy" target="_blank">Privacy</a>
+                <a href="/privacy">Privacy</a>
             </div>
-            <a href="#download" class="btn btn-primary" style="font-size:.875rem;padding:10px 20px;">
-                Download Free
-            </a>
+            <a href="#download" class="btn btn-primary nav-cta">Download Free</a>
         </div>
     </nav>
 
-    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-glow"></div>
+        <div class="hero-gradient"></div>
         <div class="container">
-            <div class="hero-badge fade-up">
-                <span>🇮🇳</span> Built for India's 600M English learners
+            <div class="hero-pill fade-up">🇮🇳 Built for India's 600 million English learners</div>
+            <h1 class="fade-up d1">Practice English.<br /><em>Sound Confident.</em></h1>
+            <p class="hero-sub fade-up d2">Your personal AI speaking coach. Have real conversations, get instant
+                feedback, and build fluency — one session at a time. Zero judgment. 100% progress.</p>
+            <div class="hero-btns fade-up d3">
+                <a href="#download" class="btn btn-primary">▶ &nbsp;Start Free Trial</a>
+                <a href="#features" class="btn btn-ghost">Explore Features</a>
             </div>
-            <h1 class="fade-up delay-1">
-                Practice English.<br />
-                <span class="accent">Sound Confident.</span>
-            </h1>
-            <p class="hero-sub fade-up delay-2">
-                Bol AI is your personal AI speaking coach. Have real conversations, get instant feedback, and build
-                fluency — one session at a time.
-            </p>
-            <div class="hero-cta fade-up delay-3">
-                <a href="#download" class="btn btn-primary">
-                    ▶ &nbsp;Start Free Trial
-                </a>
-                <a href="#features" class="btn btn-ghost">See Features</a>
+            <div class="hero-trust fade-up d4">
+                <span>Free to start</span>
+                <span class="hero-trust-dot"></span>
+                <span>7-day free trial</span>
+                <span class="hero-trust-dot"></span>
+                <span>Cancel anytime</span>
+                <span class="hero-trust-dot"></span>
+                <span>No credit card needed</span>
             </div>
 
-            <!-- Phone Mockup -->
-            <div class="phone-wrap float fade-up delay-4">
-                <div class="phone-ring"></div>
-                <div class="phone">
-                    <div class="phone-screen">
-                        <div class="ps-top">
-                            <div>
-                                <div class="ps-title">Coffee Shop</div>
-                                <div class="ps-sub">AI Conversation · Medium</div>
+            <!-- Mockup -->
+            <div class="mockup-wrap float fade-up d5">
+                <div class="mockup-glow"></div>
+                <div class="mockup-ring"></div>
+                <div class="mockup">
+                    <div class="mockup-screen">
+                        <div class="ms-header">
+                            <div class="ms-info">
+                                <div class="ms-scenario">☕ Coffee Shop</div>
+                                <div class="ms-mode">AI Conversation · Medium</div>
                             </div>
-                            <div class="ps-avatar">B</div>
+                            <div class="ms-avatar-placeholder">B</div>
                         </div>
-                        <div class="ps-bubble ai">
-                            Hi! What can I get for you today? We have a great new seasonal special — a caramel latte!
-                        </div>
-                        <div class="ps-bubble user">
-                            Could I have a large cappuccino, please? And maybe one of those croissants?
-                        </div>
-                        <div class="ps-bubble ai">
-                            Great choice! That'll be ₹320. Your name for the order?
-                        </div>
-                        <div class="ps-score">
+                        <div class="ms-bubble ai">Hi! What can I get for you today? We have a great seasonal caramel
+                            latte!</div>
+                        <div class="ms-bubble user">Could I have a large cappuccino, please? And one of those
+                            croissants?</div>
+                        <div class="ms-bubble ai">Great choice! That'll be ₹320. Name for the order?</div>
+                        <div class="ms-score">
                             <div>
-                                <div class="ps-score-label">Fluency Score</div>
+                                <div class="ms-score-label">Fluency Score</div>
                             </div>
-                            <div class="ps-score-num">88</div>
+                            <div class="ms-score-num">88</div>
                         </div>
-                        <div class="ps-mic">🎙 &nbsp; Tap to Speak</div>
+                        <div class="ms-mic">🎙 &nbsp;Tap to Speak</div>
                     </div>
                 </div>
             </div>
 
             <!-- Stats -->
-            <div class="hero-stats fade-up delay-4">
-                <div class="hero-stat">
-                    <div class="hero-stat-num">6<span>+</span></div>
-                    <div class="hero-stat-label">Practice Modes</div>
+            <div class="stats-row fade-up d5" style="max-width:800px;margin:56px auto 0">
+                <div class="stat-block">
+                    <div class="stat-num"><span class="hi">6</span>+</div>
+                    <div class="stat-label">Practice Modes</div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num"><span>₹</span>0</div>
-                    <div class="hero-stat-label">To Start Free</div>
+                <div class="stat-block">
+                    <div class="stat-num"><span class="hi">₹0</span></div>
+                    <div class="stat-label">To Start Free</div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num">7<span>-day</span></div>
-                    <div class="hero-stat-label">Free Pro Trial</div>
+                <div class="stat-block">
+                    <div class="stat-num"><span class="hi">7</span>-day</div>
+                    <div class="stat-label">Free Pro Trial</div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-num">AI<span>⚡</span></div>
-                    <div class="hero-stat-label">GPT-4o Feedback</div>
+                <div class="stat-block">
+                    <div class="stat-num">GPT<span class="hi">⚡</span></div>
+                    <div class="stat-label">4o AI Powered</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── Trusted By ────────────────────────────────────────── -->
-    <div class="trusted">
+    <!-- LOGOS STRIP -->
+    <div class="logos-strip">
         <div class="container">
-            <div class="trusted-label">Powered by world-class AI</div>
-            <div class="trusted-list">
-                <div class="trusted-item">
-                    <div class="trusted-icon">🤖</div> OpenAI GPT-4o
-                </div>
-                <div class="trusted-item">
-                    <div class="trusted-icon">🎙</div> OpenAI Whisper
-                </div>
-                <div class="trusted-item">
-                    <div class="trusted-icon">🔐</div> Supabase Auth
-                </div>
-                <div class="trusted-item">
-                    <div class="trusted-icon">☁</div> Cloud-Hosted
-                </div>
-                <div class="trusted-item">
-                    <div class="trusted-icon">🇮🇳</div> Made in India
+            <div class="logos-label">Powered by world-class infrastructure</div>
+            <div class="logos-list">
+                <div class="logo-pill"><span class="logo-dot" style="background:#10A37F"></span>OpenAI GPT-4o</div>
+                <div class="logo-pill"><span class="logo-dot" style="background:#7C3AED"></span>Whisper ASR</div>
+                <div class="logo-pill"><span class="logo-dot" style="background:#3ECF8E"></span>Supabase Auth</div>
+                <div class="logo-pill"><span class="logo-dot" style="background:#FF4F00"></span>Render Cloud</div>
+                <div class="logo-pill"><span class="logo-dot" style="background:var(--accent)"></span>Made in India 🇮🇳
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ── Features ──────────────────────────────────────────── -->
+    <!-- FEATURES -->
     <section class="features" id="features">
         <div class="container">
-            <div class="features-head">
-                <div class="section-label">What You Get</div>
-                <div class="section-title">Everything you need to<br /><span class="accent">master spoken English</span>
-                </div>
-                <p class="section-sub">Six powerful practice modes, all powered by real AI — not scripts.</p>
+            <div class="features-header">
+                <div class="section-eyebrow">What You Get</div>
+                <div class="section-title">Everything you need to<br />master spoken English</div>
+                <p class="section-body">Six powerful AI-driven practice modes. Not scripts — real language intelligence.
+                </p>
             </div>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="background:rgba(0,230,118,.1)">🎙</div>
-                    <div class="feature-title">Daily Speaking Challenges</div>
-                    <div class="feature-desc">Answer a new topic every day. Get detailed AI feedback on fluency,
-                        grammar, vocabulary, and confidence — like having a personal coach.</div>
+                <div class="feat-card">
+                    <span class="feat-icon">🎙</span>
+                    <div class="feat-title">Daily Speaking Challenges</div>
+                    <div class="feat-desc">Answer a fresh topic every day. Get AI feedback on fluency, grammar,
+                        vocabulary, and confidence — like having a personal speaking coach 24/7.</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background:rgba(0,188,212,.1)">💬</div>
-                    <div class="feature-title">AI Conversations</div>
-                    <div class="feature-desc">Practice real scenarios: coffee shop, job interview, travel,
-                        presentations. Choose Easy, Medium, or Hard and have full voice conversations with AI.</div>
+                <div class="feat-card">
+                    <span class="feat-icon">💬</span>
+                    <div class="feat-title">AI Conversations</div>
+                    <div class="feat-desc">Practice real-life scenarios — coffee shop, job interview, travel, business
+                        pitches. Choose Easy, Medium, or Hard and speak freely with AI.</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background:rgba(139,92,246,.1)">🎯</div>
-                    <div class="feature-title">Pronunciation Coach</div>
-                    <div class="feature-desc">Record yourself saying words. AI compares your pronunciation word-by-word
-                        and gives you a score with specific corrections.</div>
+                <div class="feat-card">
+                    <span class="feat-icon">🎯</span>
+                    <div class="feat-title">Pronunciation Coach</div>
+                    <div class="feat-desc">Record a word, get a word-by-word score. Bol AI uses Whisper AI to detect
+                        exactly where your pronunciation needs improvement.</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background:rgba(245,158,11,.1)">📖</div>
-                    <div class="feature-title">Word of the Day</div>
-                    <div class="feature-desc">Build your vocabulary every day. Learn the word in context, hear it
-                        pronounced, then practice using it in your own sentences with AI evaluation.</div>
+                <div class="feat-card">
+                    <span class="feat-icon">📖</span>
+                    <div class="feat-title">Word of the Day</div>
+                    <div class="feat-desc">Learn one powerful new word every day — with meaning, pronunciation, and
+                        AI-evaluated sentence practice. Build a rich vocabulary effortlessly.</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background:rgba(239,68,68,.1)">📓</div>
-                    <div class="feature-title">Grammar Error Journal</div>
-                    <div class="feature-desc">Every grammar mistake you make is saved and explained. Review past errors,
-                        search by type, and track your improvement over time.</div>
+                <div class="feat-card">
+                    <span class="feat-icon">📓</span>
+                    <div class="feat-title">Grammar Error Journal</div>
+                    <div class="feat-desc">Every grammar mistake is captured, explained, and stored. Search your errors,
+                        filter by category, and watch yourself improve session by session.</div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="background:rgba(16,185,129,.1)">🤖</div>
-                    <div class="feature-title">AI Tutor Chat</div>
-                    <div class="feature-desc">Ask anything about English grammar, usage, or pronunciation. Your personal
-                        AI tutor is available 24/7, responds in seconds.</div>
+                <div class="feat-card">
+                    <span class="feat-icon">🤖</span>
+                    <div class="feat-title">AI Tutor Chat</div>
+                    <div class="feat-desc">Ask anything about English — grammar rules, idioms, usage, pronunciation. Get
+                        an expert-level explanation in seconds, available 24/7.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── How It Works ──────────────────────────────────────── -->
+    <!-- HOW IT WORKS -->
     <section class="hiw" id="how-it-works">
         <div class="container">
             <div class="hiw-inner">
                 <div>
-                    <div class="section-label">How It Works</div>
-                    <div class="section-title">Speak. Get feedback.<br /><span class="accent">Improve daily.</span>
-                    </div>
-                    <p class="section-sub" style="margin-bottom:36px">
-                        No boring textbooks. No waiting for a human tutor. Just you, a mic, and real AI feedback in
-                        seconds.
-                    </p>
-                    <div class="hiw-steps">
-                        <div class="hiw-step">
-                            <div class="hiw-step-num" style="background:rgba(0,230,118,.1);color:var(--accent)">1</div>
+                    <div class="section-eyebrow">How It Works</div>
+                    <div class="section-title" style="margin-bottom:14px">Speak. Improve.<br /><span
+                            style="background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Repeat
+                            daily.</span></div>
+                    <p class="section-body" style="margin-bottom:40px">No boring textbooks. No expensive tutors. Just
+                        you, a mic, and real AI feedback in seconds.</p>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-badge" style="background:rgba(0,230,118,.1);color:var(--accent)">1</div>
                             <div>
-                                <div class="hiw-step-title">Pick a mode & start speaking</div>
-                                <div class="hiw-step-desc">Choose a daily challenge, conversation scenario, or
-                                    pronunciation set — then tap the mic and speak naturally.</div>
+                                <div class="step-title">Pick your mode & hit the mic</div>
+                                <div class="step-desc">Choose a daily challenge, conversation, or pronunciation set —
+                                    tap record and speak naturally. No scripts, no pressure.</div>
                             </div>
                         </div>
-                        <div class="hiw-step">
-                            <div class="hiw-step-num" style="background:rgba(0,188,212,.1);color:var(--accent2)">2</div>
+                        <div class="step">
+                            <div class="step-badge" style="background:rgba(0,188,212,.1);color:var(--cyan)">2</div>
                             <div>
-                                <div class="hiw-step-title">AI analyses your speech instantly</div>
-                                <div class="hiw-step-desc">Whisper transcribes your voice. GPT-4o evaluates fluency,
-                                    grammar, vocabulary, and confidence in under 3 seconds.</div>
+                                <div class="step-title">AI analyses your speech instantly</div>
+                                <div class="step-desc">Whisper transcribes your voice. GPT-4o evaluates fluency,
+                                    grammar, vocabulary, and confidence — results in under 3 seconds.</div>
                             </div>
                         </div>
-                        <div class="hiw-step">
-                            <div class="hiw-step-num" style="background:rgba(139,92,246,.1);color:var(--purple)">3</div>
+                        <div class="step">
+                            <div class="step-badge" style="background:rgba(139,92,246,.1);color:var(--purple)">3</div>
                             <div>
-                                <div class="hiw-step-title">Track your streak & grow</div>
-                                <div class="hiw-step-desc">Every session builds your streak. Watch your fluency score
-                                    climb. Review errors in your Grammar Journal. Get better every day.</div>
+                                <div class="step-title">Track your streak & grow</div>
+                                <div class="step-desc">Daily streaks motivate consistency. Your Grammar Journal tracks
+                                    every mistake. Watch your fluency score rise over time.</div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hiw-visual">
-                    <div class="section-label" style="margin-bottom:8px">Live AI Feedback</div>
-                    <div style="font-size:.85rem;color:var(--text3)">Recording your voice...</div>
+                <div class="demo-card">
+                    <div class="section-eyebrow" style="margin-bottom:6px">Live AI Feedback</div>
+                    <div style="font-size:.82rem;color:var(--text3)">Recording your voice...</div>
                     <div class="wave-bars">
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
-                        <div class="wave-bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
                     </div>
-                    <div class="feedback-card">
-                        <div class="feedback-row"><span class="feedback-label">Fluency</span><span
-                                class="feedback-val">88%</span></div>
-                        <div class="feedback-bar-track">
-                            <div class="feedback-bar-fill" style="width:88%"></div>
+                    <div class="score-card">
+                        <div class="score-row"><span class="score-label">Fluency</span><span
+                                class="score-val">88%</span></div>
+                        <div class="score-track">
+                            <div class="score-fill" style="width:88%"></div>
                         </div>
-                        <div class="feedback-row"><span class="feedback-label">Grammar</span><span
-                                class="feedback-val">92%</span></div>
-                        <div class="feedback-bar-track">
-                            <div class="feedback-bar-fill"
-                                style="width:92%;background:linear-gradient(90deg,var(--accent2),var(--accent))"></div>
+                        <div class="score-row"><span class="score-label">Grammar</span><span
+                                class="score-val">92%</span></div>
+                        <div class="score-track">
+                            <div class="score-fill"
+                                style="width:92%;background:linear-gradient(90deg,var(--cyan),var(--accent))"></div>
                         </div>
-                        <div class="feedback-row"><span class="feedback-label">Vocabulary</span><span
-                                class="feedback-val">76%</span></div>
-                        <div class="feedback-bar-track">
-                            <div class="feedback-bar-fill"
-                                style="width:76%;background:linear-gradient(90deg,var(--purple),var(--accent2))"></div>
+                        <div class="score-row"><span class="score-label">Vocabulary</span><span
+                                class="score-val">76%</span></div>
+                        <div class="score-track">
+                            <div class="score-fill"
+                                style="width:76%;background:linear-gradient(90deg,var(--purple),var(--cyan))"></div>
                         </div>
-                        <div
-                            style="margin-top:14px;font-size:.78rem;color:var(--text2);line-height:1.6;border-top:1px solid var(--border);padding-top:14px">
-                            💡 <strong style="color:var(--text)">Tip:</strong> Great use of "could I have" — very
-                            polite! Try adding "please" at the end for even more natural flow.
-                        </div>
+                        <div class="score-tip">💡 <strong style="color:var(--text)">Tip:</strong> Great use of "could I
+                            have" — very polite! Try adding "please" at the end for an even more natural flow.</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── Pricing ───────────────────────────────────────────── -->
+    <!-- PRICING -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <div class="pricing-head">
-                <div class="section-label">Simple Pricing</div>
-                <div class="section-title">Start free. Upgrade when<br /><span class="accent">you're ready.</span></div>
-                <p class="section-sub" style="margin:14px auto 0">7-day free trial on Pro. No credit card needed to
-                    start.</p>
+            <div class="pricing-header">
+                <div class="section-eyebrow">Simple Pricing</div>
+                <div class="section-title">Start free. Go Pro<br />when you're ready.</div>
+                <p class="section-body" style="margin:14px auto 0">7-day free trial. No credit card needed. Cancel
+                    anytime from the app.</p>
             </div>
-            <div class="pricing-grid">
-                <!-- Free -->
-                <div class="pricing-card">
-                    <div class="plan-name">Free</div>
-                    <div class="plan-price"><sup></sup>₹0</div>
-                    <div class="plan-period">forever</div>
-                    <div class="plan-trial" style="color:var(--text3)">No credit card needed</div>
+            <div class="plans">
+                <div class="plan">
+                    <div class="plan-tier">Free</div>
+                    <div class="plan-price">₹0</div>
+                    <div class="plan-cadence">forever</div>
+                    <div class="plan-trial" style="color:var(--text3);font-size:.8rem">No card required</div>
                     <div class="plan-divider"></div>
-                    <ul class="plan-features">
-                        <li><span class="check" style="color:var(--accent)">✓</span> 1 daily challenge</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> 1 conversation/day</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> Basic feedback</li>
-                        <li class="missing"><span class="check">✗</span> Pronunciation Coach</li>
-                        <li class="missing"><span class="check">✗</span> Grammar Journal</li>
-                        <li class="missing"><span class="check">✗</span> AI Tutor</li>
+                    <ul class="plan-items">
+                        <li><span class="check-box check-y">✓</span>1 speaking challenge/day</li>
+                        <li><span class="check-box check-y">✓</span>1 conversation/day</li>
+                        <li><span class="check-box check-y">✓</span>Basic AI feedback</li>
+                        <li class="off"><span class="check-box check-n">✗</span>Pronunciation Coach</li>
+                        <li class="off"><span class="check-box check-n">✗</span>Grammar Journal</li>
+                        <li class="off"><span class="check-box check-n">✗</span>AI Tutor Chat</li>
                     </ul>
-                    <a href="#download" class="plan-cta plan-cta-ghost">Download Free</a>
+                    <a href="#download" class="plan-btn plan-btn-ghost">Download Free</a>
                 </div>
-                <!-- Pro -->
-                <div class="pricing-card popular">
-                    <div class="popular-tag">⚡ 7-day free trial</div>
-                    <div class="plan-name">Pro</div>
-                    <div class="plan-price"><sup>₹</sup>199</div>
-                    <div class="plan-period">/month &nbsp;·&nbsp; or ₹1,499/year (save 37%)</div>
-                    <div class="plan-trial">Start free — no charge for 7 days</div>
+                <div class="plan featured">
+                    <div class="plan-badge">⚡ 7-day free trial</div>
+                    <div class="plan-tier">Pro</div>
+                    <div class="plan-price"><span class="plan-price-currency">₹</span>199</div>
+                    <div class="plan-cadence">/month &nbsp;·&nbsp; or ₹1,499/year <span
+                            style="color:var(--accent);font-weight:700">(save 37%)</span></div>
+                    <div class="plan-trial">7 days free — no charge today</div>
                     <div class="plan-divider"></div>
-                    <ul class="plan-features">
-                        <li><span class="check" style="color:var(--accent)">✓</span> Unlimited challenges</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> All conversation scenarios</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> Easy / Medium / Hard difficulty
-                        </li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> Pronunciation Coach</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> Word of the Day + Vocab</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> Grammar Error Journal</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> AI Tutor (24/7)</li>
-                        <li><span class="check" style="color:var(--accent)">✓</span> Full analytics & streak</li>
+                    <ul class="plan-items">
+                        <li><span class="check-box check-y">✓</span>Unlimited speaking challenges</li>
+                        <li><span class="check-box check-y">✓</span>All scenarios + Easy/Medium/Hard</li>
+                        <li><span class="check-box check-y">✓</span>Pronunciation Coach</li>
+                        <li><span class="check-box check-y">✓</span>Word of the Day + Vocabulary</li>
+                        <li><span class="check-box check-y">✓</span>Grammar Error Journal</li>
+                        <li><span class="check-box check-y">✓</span>AI Tutor (24/7)</li>
+                        <li><span class="check-box check-y">✓</span>Full analytics & streak tracking</li>
                     </ul>
-                    <a href="#download" class="plan-cta plan-cta-primary">Start Free Trial</a>
+                    <a href="#download" class="plan-btn plan-btn-primary">Start Free Trial</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ── Download CTA ──────────────────────────────────────── -->
-    <section id="download">
+    <!-- DOWNLOAD -->
+    <section class="download" id="download">
         <div class="container">
-            <div class="cta-banner">
-                <div class="section-label">Available on Android</div>
-                <h2>Start your free trial today.<br /><span class="accent">No excuses.</span></h2>
-                <p>Join thousands of Indian learners already practicing English with Bol AI. 7 days free, cancel
-                    anytime.</p>
-                <div class="cta-buttons">
-                    <a href="https://play.google.com/store" target="_blank" class="play-btn">
-                        <span class="play-btn-icon">▶</span>
+            <div class="download-card">
+                <img src="logo.png" alt="Bol AI" class="download-logo" />
+                <div class="section-eyebrow" style="margin-bottom:16px">Available on Android</div>
+                <div class="download-title">Start speaking.<br /><span
+                        style="background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">No
+                        excuses.</span></div>
+                <p class="download-sub">7 days completely free. Then ₹199/month or ₹1,499/year. Cancel anytime from
+                    Google Play.</p>
+                <div class="download-btns">
+                    <a href="https://play.google.com/store" target="_blank" rel="noopener" class="gplay-btn">
+                        <span class="gplay-icon">▶</span>
                         <div>
-                            <div class="play-btn-sub">GET IT ON</div>
-                            <div class="play-btn-name">Google Play</div>
+                            <div class="gplay-sub">Get it on</div>
+                            <div class="gplay-name">Google Play</div>
                         </div>
                     </a>
                 </div>
-                <div style="margin-top:20px;font-size:.8rem;color:var(--text3)">
-                    🔒 Payments through Google Pay · UPI · Cards · Netbanking
-                </div>
+                <div class="download-note">🔒 Payments via Google Pay · UPI · Cards · Net Banking</div>
             </div>
         </div>
     </section>
 
-    <!-- ── Footer ────────────────────────────────────────────── -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-inner">
+            <div class="footer-main">
                 <div class="footer-brand">
-                    <div class="nav-logo">
-                        <div class="nav-logo-icon">B</div>
-                        <span class="nav-logo-text">Bol AI</span>
+                    <div class="footer-brand-logo">
+                        <img src="logo.png" alt="Bol AI" class="footer-brand-img" />
+                        <span class="footer-brand-name">Bol AI</span>
                     </div>
-                    <p class="footer-tagline">
-                        India's smartest AI English speaking coach. Practice real conversations, get instant feedback,
-                        build confidence.
-                    </p>
+                    <p class="footer-tagline">India's smartest AI English speaking coach. Real conversations, instant AI
+                        feedback, zero judgment.</p>
                 </div>
-                <div class="footer-links">
-                    <a href="#features">Features</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="https://bol-ai.onrender.com/privacy" target="_blank">Privacy Policy</a>
-                    <a href="https://bol-ai.onrender.com/terms" target="_blank">Terms of Service</a>
-                    <a href="mailto:riteshkumarsingh821310@gmail.com">Contact</a>
+                <div>
+                    <div class="footer-col-title">Product</div>
+                    <div class="footer-links">
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How it works</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#download">Download</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-col-title">Legal & Support</div>
+                    <div class="footer-links">
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/terms">Terms of Service</a>
+                        <a href="mailto:riteshkumarsingh821310@gmail.com">Contact Us</a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-copy">
-                &copy; 2025 Bol AI · Made with ❤️ in India · <a href="mailto:riteshkumarsingh821310@gmail.com"
-                    style="color:var(--accent)">riteshkumarsingh821310@gmail.com</a>
+            <div class="footer-bottom">
+                <span>© 2025 Bol AI · Made with ❤️ in India</span>
+                <div class="footer-bottom-links">
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="mailto:riteshkumarsingh821310@gmail.com">Contact</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Nav scroll effect
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        });
+    </script>
 </body>
 
 </html>
